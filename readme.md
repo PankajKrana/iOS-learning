@@ -8,7 +8,7 @@
 <img src="https://github.com/user-attachments/assets/bfa2dfb8-82e3-4e24-be3e-68e5b9414346" alt="Simulator Screenshot - iPhone 16 Pro - 2024-10-22 at 15:45:53" width="200" />
 
 
-## Animatin 
+## Animation
 
 <img src="https://github.com/user-attachments/assets/3c913de8-53d0-473f-a89a-5eb47643f77a" alt="Simulator Screenshot - iPhone 16 Pro - 2024-10-22 at 15:57:26" width="200" />
 <img src="https://github.com/user-attachments/assets/4599e211-55e2-4b16-ad2a-64751555b5bf" alt="Simulator Screenshot - iPhone 16 Pro - 2024-10-22 at 15:57:23" width="200" />
@@ -20,7 +20,10 @@
 <img src="https://github.com/user-attachments/assets/b3474e74-0866-484e-80a6-2fd57e9f632f" alt="Simulator Screenshot - iPhone 16 Pro - 2024-10-22 at 16:03:07" width="200" />
 
 
+## Exloring View
 
+<img src="https://github.com/user-attachments/assets/ee36aa66-cf4f-4f51-829a-dab64c0ddc2d" alt="Simulator Screenshot - iPhone 16 Pro - 2024-10-22 at 16:06:37" width="200" />
+<img src="https://github.com/user-attachments/assets/c3364c0c-8a4d-4980-8b77-8bbdd35b9e7b" alt="Simulator Screenshot - iPhone 16 Pro - 2024-10-22 at 16:06:34" width="200" />
 
 
 
