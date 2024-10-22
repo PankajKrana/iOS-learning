@@ -15,6 +15,10 @@
 <img src="https://github.com/user-attachments/assets/d91945c5-c3aa-42c4-8b7b-f054ca2cbc00" alt="Simulator Screenshot - iPhone 16 Pro - 2024-10-22 at 15:57:34" width="200" />
 <img src="https://github.com/user-attachments/assets/d08e3838-eb73-4690-9841-b7df2e409a0f" alt="Simulator Screenshot - iPhone 16 Pro - 2024-10-22 at 15:57:30" width="200" />
 
+## Explore Grids
+
+<img src="https://github.com/user-attachments/assets/b3474e74-0866-484e-80a6-2fd57e9f632f" alt="Simulator Screenshot - iPhone 16 Pro - 2024-10-22 at 16:03:07" width="200" />
+
 
 
 
