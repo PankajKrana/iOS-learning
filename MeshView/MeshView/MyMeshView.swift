@@ -34,6 +34,7 @@ struct MyMeshView: View {
         )
     }
     
+    let duration = 5.0
     var animation: Animation {
         Animation
             .linear(duration: 5)
@@ -44,23 +45,48 @@ struct MyMeshView: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        
         mesh
             .animation(animation, value: points)
             .ignoresSafeArea()
             .onReceive(timer) { _ in
-                let someColors: [Color] = [
-                    .indigo,
-                    .brown, .green ,.white,
-                    .purple, .mint,
-                ]
-                
-                points[4].x = Float.random(in: 0...1)
-                points[4].y  = Float.random(in: 0...1)
-                colors[4] = someColors
-                    .randomElement() ?? .indigo
+                randomizePointAndColors()
                 
             }
+    }
+    
+    func randomizePointAndColors() {
+        
+        let someColors: [Color] = [
+            .indigo,
+            .brown, .green ,.white,
+            .purple, .mint,
+        ]
+        
+                        
+        points[4].x = Float.random(in: 0...1)
+        points[4].y  = Float.random(in: 0...1)
+        colors[4] = someColors
+            .randomElement() ?? .indigo
+        
+        
+        // Upper left hand corner
+
+        points[0].x = Float.random(in: 0.2...0.4)
+        points[0].y  = Float.random(in: 0.1...0.3)
+        colors[0] = someColors
+            .randomElement() ?? .indigo
+
+
+        // bottom right hand corner
+        points[8].x = Float.random(in: 0.6...0.8)
+        points[8].y  = Float.random(in: 0.7...0.9)
+        colors[8] = someColors
+            .randomElement() ?? .indigo
+
+        background = someColors
+            .randomElement() ?? .indigo
+        
+
     }
 }
 
