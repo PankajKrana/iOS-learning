@@ -1,0 +1,37 @@
+{
+  "configurations" : [
+    {
+      "id" : "2E29D614-BA6C-4FD6-B84A-5B5CE4636F26",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Shuzi.xcodeproj",
+      "identifier" : "D40004D52D93D86400B8A8FC",
+      "name" : "Shuzi"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:Shuzi.xcodeproj",
+        "identifier" : "D40004E62D93D86600B8A8FC",
+        "name" : "ShuziTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Shuzi.xcodeproj",
+        "identifier" : "D40004F02D93D86600B8A8FC",
+        "name" : "ShuziUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

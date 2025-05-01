@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  Adding Game
+
+  Created by Pankaj Kumar Rana on 4/22/25.
+  
+*/
+
+"Game Over" = "ゲームオーバー";
+"Score" = "スコア";
+"Level" = "レベル";
+"Score" = "スコア";
+"Game" = "ゲーム";
+"High Scores" = "ハイスコア";
+"Rank" = "ランク";
+"Name" = "名前";
+"Save" = "保存";

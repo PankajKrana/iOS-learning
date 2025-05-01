@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  Adding Game
+
+  Created by Pankaj Kumar Rana on 4/22/25.
+  
+*/
+
+"Game Over" = "انتهت اللعبة";
+"Score" = "النتيجة";
+"Level" = "المستوى";
+"Score" = "النتيجة";
+"Game" = "لعبة";
+"High Scores" = "أعلى النتائج";
+"Rank" = "الترتيب";
+"Name" = "الاسم";
+"Save" = "حفظ";

@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  Adding Game
+
+  Created by Pankaj Kumar Rana on 4/22/25.
+  
+*/
+
+"Game Over" = "Fin de jeu";
+"Score" = "Score";
+"Level" = "Niveau";
+"Score" = "Score";
+"Game" = "Jeu";
+"High Scores" = "Meilleurs scores";
+"Rank" = "Classement";
+"Name" = "Nom";
+"Save" = "Sauvegarder";
