@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  Alarm
+
+  Created by Pankaj Kumar Rana on 5/2/25.
+  
+*/
+
+"alarm" = "अलार्म";
+"on" = "चालू";
+"off" = "बंद";
+"create" = "बनाएं";
+"Add Alarm" = "अलार्म जोड़ें";
+"Alarm List" = "अलार्म सूची";
+"About" = "के बारे में";
+"No Alarms" = "कोई अलार्म नहीं";
+"to Anton's page" = "एंटन के पृष्ठ पर";
+"The UI for this nice Alarm app was largely inspired by the amazing work of Anton Leogky." = "इस शानदार अलार्म ऐप का UI मुख्यतः एंटन लियोग्की के अद्भुत कार्य से प्रेरित है।";
+"you did it! here you can manage your alarm, change time and other things" = "आपने कर दिखाया! यहां आप अपना अलार्म प्रबंधित कर सकते हैं, समय बदल सकते हैं और अन्य चीजें कर सकते हैं।";
+"hello there!" = "नमस्ते!";
+"let's add an alarm" = "आइए एक अलार्म जोड़ें";
+"start" = "शुरू";
+"end" = "समाप्त";
+"Have a great day!" = "आपका दिन शुभ हो!";
+"Activity completed." = "गतिविधि पूर्ण हुई।";
+"Enable notifications, please" = "कृपया सूचनाएं सक्षम करें";
+"Set the alarm" = "अलार्म सेट करें";
+"Sound" = "ध्वनि";
+"Cancel" = "रद्द करें";
+"Save" = "सहेजें";
+"enable" = "सक्षम करें";
