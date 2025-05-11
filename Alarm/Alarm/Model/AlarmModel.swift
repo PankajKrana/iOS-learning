@@ -13,7 +13,7 @@ struct AlarmModel: Identifiable {
     let title: String
     let body: String
     let repeats: Bool
-    let sound: Sounds
+    var sound: Sounds
     var alarmEnabled: Bool
     
     var start: Date

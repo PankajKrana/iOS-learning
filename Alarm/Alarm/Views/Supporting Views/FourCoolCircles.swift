@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct CoolCircleView: View {
     let radius: CGFloat
     var color1 = yellow

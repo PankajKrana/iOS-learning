@@ -10,13 +10,14 @@ import SwiftUI
 struct ToBedWakeUpView: View {
     let currentAlarmIndex: Int?
     @State var alarmModel: AlarmModel
-    
+
     var body: some View {
         NavigationStack {
             VStack {
-                Text("Cancle or Save Alarm")
                 
-                Text("Toggle Alarm")
+                CancelSaveAlarm(currentAlarmIndex: currentAlarmIndex, alarmModel: $alarmModel)
+                
+                AlarmToggleView(alarmEnabled: $alarmModel.alarmEnabled)
                 
                 Divider()
                 
@@ -28,9 +29,7 @@ struct ToBedWakeUpView: View {
                             VStack(alignment: .leading) {
                                 GrayedTextView(text: "start")
                                 
-                                Text("Time Picker")
-                                
-                                
+                                TimePicker(time: $alarmModel.start, scale: 1.3)
                             }
                         }
                         
@@ -47,7 +46,8 @@ struct ToBedWakeUpView: View {
                                 .foregroundColor(alarmModel.activityColor)
                                 .font(.headline)
                             
-                            Text("SelectActivityView")
+                            
+                            SelectActivityView(currentColorIndex: $alarmModel.colorIndex, currentActivity: $alarmModel.activity)
                         }
                         .padding(.vertical)
                         
@@ -58,63 +58,42 @@ struct ToBedWakeUpView: View {
                                     .padding(2)
                             }
                         }
-                        
+
                         GridRow {
                             TimeOfDayIcon(date: alarmModel.end)
                                 .font(.largeTitle)
                             VStack(alignment: .leading) {
-                                Text("Time Picker")
+                                TimePicker(time: $alarmModel.end, scale: 1.3)
+
                                 GrayedTextView(text: "end")
                             }
                         }
                         
-//                        GridRow {
-//                            Text("")
-//                            
-//                            HStack {
-//                                Text("Sound")
-//                                    .fontWeight(.semibold)
-//                                
-//                                Text(alarmModel.sound.rawValue)
-//                                    .font(.caption)
-//                                    .fontWeight(.thin)
-//                            }
-//                            .padding(7)
-//                            .overlay(
-//                                Capsule()
-//                                    .stroke()
-//                            )
-//                            .contextMenu {
-//                                ForEach(Sounds.allCases, id: \.self) {
-//                                    sound in
-//                                    
-//                                    Button(action: {
-//                                        alarmModel.sound = sound
-//                                    }, label: {
-//                                        Text(sound.rawValue)
-//                                    })
-//                                }
-//                                .padding(.vertical)
-//                                
-//                                
-//                            }
-//                            
-//                        }
-                        
+                        GridRow {
+                            Text("")
+                            
+                            SoundMenuViewFromButton(alarmModel: $alarmModel)
+
+                        }
+
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }.padding()
             }.padding()
                 .background(
-                    cardBackgroundColor
-                        .cornerRadius(20)
+                cardBackgroundColor
+                    .cornerRadius(20)
                 )
-                .padding()
+            .padding()
         }
     }
 }
 
 
 #Preview {
-    ToBedWakeUpView(currentAlarmIndex: nil, alarmModel: .DefaultAlarm())
+    ZStack {
+        Color.gray.opacity(0.3).ignoresSafeArea()
+        
+        ToBedWakeUpView(currentAlarmIndex: nil, alarmModel: .DefaultAlarm())
+    }
 }
