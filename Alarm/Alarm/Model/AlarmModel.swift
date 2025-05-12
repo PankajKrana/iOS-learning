@@ -8,8 +8,8 @@
 import Foundation
 import SwiftUI
 
-struct AlarmModel: Identifiable {
-    let id = UUID().uuidString
+struct AlarmModel: Identifiable, Codable {
+    var id = UUID().uuidString
     let title: String
     let body: String
     let repeats: Bool
