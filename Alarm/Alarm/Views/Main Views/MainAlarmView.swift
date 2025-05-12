@@ -8,14 +8,45 @@
 import SwiftUI
 
 struct MainAlarmView: View {
+    @EnvironmentObject var lnManager: LocalNotificationManager
+    
+    // Every time the scene phase changes this will update
+    // Use onChanged
+    @Environment(\.scenePhase) var scenePhase
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, Alarm")
+        TabView {
+            if lnManager.isAuthorized {
+                ListOfTheAlarmsView()
+                    .tabItem({
+                        Label("Alarms", systemImage: "alarm.fill")
+                    })
+                
+                AboutView()
+                    .tabItem({
+                        Label("About", systemImage: "info.circle.fill")
+                    })
+            } else {
+                EnableNotifications()
+            }
+            
         }
-        .padding()
+        .ignoresSafeArea()
+        .task {
+            try? await lnManager
+                .requestAuthorization()
+        }
+        .onChange(of: scenePhase) { newValue in
+            if newValue == .active {
+                Task {
+                    await lnManager
+                        .getCurrentSettings()
+                    
+                    await lnManager
+                        .getPendingAlarms()
+                }
+            }
+        }
+        
     }
 }
 

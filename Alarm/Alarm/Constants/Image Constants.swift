@@ -9,7 +9,7 @@ import Foundation
 
 let welcome = "welcome"
 let appImageSamples = "appImageSamples"
-let CircularViewImage = "CircularViewImage"
-let StandardViewImage = "StandardViewImage"
+let circularViewImage = "CircularViewImage"
+let standardViewImage = "StandardViewImage"
 let partyPerson = "undraw_Beach_day_cser"
 
