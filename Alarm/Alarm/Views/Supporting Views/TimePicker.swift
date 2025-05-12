@@ -14,10 +14,8 @@ struct TimePicker: View {
     }
 }
 
-struct TimePicker_Previews: PreviewProvider {
-    static var previews: some View {
-        TimePicker(
-            time: .constant(Date()),
-            scale: 1.3)
-    }
+#Preview {
+    TimePicker(
+        time: .constant(Date()),
+        scale: 1.3)
 }
