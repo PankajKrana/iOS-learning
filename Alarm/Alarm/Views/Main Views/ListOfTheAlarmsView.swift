@@ -83,9 +83,7 @@ struct ListOfTheAlarmsView: View {
     }
 }
 
-struct ListOfTheAlarmsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ListOfTheAlarmsView()
-            .environmentObject(LocalNotificationManager())
-    }
+#Preview {
+    ListOfTheAlarmsView()
+        .environmentObject(LocalNotificationManager())
 }
