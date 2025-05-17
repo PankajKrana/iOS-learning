@@ -25,7 +25,7 @@ struct ContentView: View {
         x: CGFloat.random(in: 100...200),
         y: CGFloat.random(in: 100...200)
     )
-    let radiusOfInfluence = 0.3 // In values between 0 and 1
+    let radiusOfInfluence = 0.2 // In values between 0 and 1
     
     let dragDotRadius = 5.0
     
@@ -73,11 +73,26 @@ struct ContentView: View {
     
     func drawDotsAndLines( context: GraphicsContext, size: CGSize, dots: [CGPoint], dotRadius: CGFloat, dragLocation: CGPoint, radiusOfInfluence: CGFloat) {
         
+        
+        let radius = radiusOfInfluence * min(size.width, size.height)
+        
         for dot in dots {
             let actualX = dot.x * size.width
             let actualY = dot.y * size.height
             
-            let dim = dotRadius * 2
+            let distance = distance(
+                x0: actualX,
+                y0: actualY,
+                x1: dragLocation.x,
+                y1: dragLocation.y
+            )
+            
+            var dim = dotRadius * 2
+
+            if distance > radius {
+                let factor = radius / distance
+                dim *= factor
+            }
             
             
             let circle = Path(
@@ -99,13 +114,36 @@ struct ContentView: View {
                 y0: dragLocation.y,
                 x1: actualX,
                 y1: actualY,
-                result: radiusOfInfluence
+                radius: radius
             )
             
         }
     }
     
-    func drawNoisyLine(context: GraphicsContext, x0: CGFloat, y0: CGFloat, x1: CGFloat, y1: CGFloat, result: CGFloat) {
+    func drawNoisyLine(
+        context: GraphicsContext,
+        x0: CGFloat,
+        y0: CGFloat,
+        x1: CGFloat,
+        y1: CGFloat,
+        radius: CGFloat
+    ) {
+        let dist = distance(
+            x0: x0,
+            y0: y0,
+            x1: x1,
+            y1: y1
+        )
+        
+        if dist <= radius {
+            var path = Path()
+            path.move(to: CGPoint(x: x0, y: y0))
+            path.addLine(to: CGPoint(x: x1, y: y1))
+            
+            context
+                .stroke(path, with: .color(.white.opacity(0.7)))
+        }
+        
         var path = Path()
         path.move(to:  CGPoint(x: x0, y: y0))
         
@@ -113,6 +151,20 @@ struct ContentView: View {
         
         context.stroke(path, with: .color(.white.opacity(0.7)))
     }
+    
+    func distance(
+        x0: CGFloat,
+        y0: CGFloat,
+        x1: CGFloat,
+        y1: CGFloat,
+    ) -> CGFloat {
+        let dx = x1 - x0
+        let dy = y1 - y0
+        
+        return sqrt(dx * dx + dy * dy)
+        
+    }
+    
 }
 
 #Preview {
