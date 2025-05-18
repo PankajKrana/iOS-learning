@@ -88,10 +88,15 @@ struct ContentView: View {
             )
             
             var dim = dotRadius * 2
+            var color: GraphicsContext.Shading = .color(.blue)
 
             if distance > radius {
-                let factor = radius / distance
-                dim *= factor
+                let factor = radius / distance // 0..1
+                dim *= factor * factor
+            }
+            
+            if distance > 1.5 * radius {
+                color = .color(.green)
             }
             
             
@@ -104,7 +109,7 @@ struct ContentView: View {
                 )
             )
             
-            context.fill(circle, with: .color(.blue))
+            context.fill(circle, with: color)
             
             // Draw noisy line
             
@@ -138,10 +143,30 @@ struct ContentView: View {
         if dist <= radius {
             var path = Path()
             path.move(to: CGPoint(x: x0, y: y0))
-            path.addLine(to: CGPoint(x: x1, y: y1))
+            
+            let segments = 50
+            for i in 1...segments {
+                let t = CGFloat(i) / CGFloat(segments)
+                let x = lerp(a: x0, b: x1, t: t)
+                let y = lerp(a: y0, b: y1, t: t)
+                
+                // Randomness
+                let k = noise(x: x / 5 + x0, y: y / 5 + y0) * 30
+                
+                let angle = noise(x: x + k, y: y + k)
+                // Random Displacement
+                let dist = sin(angle) * 0.5
+                
+                path.addLine(to: CGPoint(x: x + k + dist, y: y + k + dist))
+
+                 
+            }
+            
+            let randColor: Color = [Color.blue, Color.green, Color.red].randomElement() ?? Color.orange
             
             context
-                .stroke(path, with: .color(.white.opacity(0.7)))
+                .stroke(path, with: .color(randColor.opacity(0.7)), lineWidth: 1)
+                
         }
         
         var path = Path()
@@ -149,7 +174,7 @@ struct ContentView: View {
         
         path.addLine(to: CGPoint(x: x1, y: y1))
         
-        context.stroke(path, with: .color(.white.opacity(0.7)))
+//        context.stroke(path, with: .color(.white.opacity(0.7)))
     }
     
     func distance(
@@ -163,6 +188,20 @@ struct ContentView: View {
         
         return sqrt(dx * dx + dy * dy)
         
+    }
+    
+    // Linear Interpulation Function
+    // t = 0 -> a
+    // t = 1 -> b
+    func lerp(a: CGFloat, b: CGFloat, t: CGFloat) -> CGFloat {
+        a + (b-a) * t
+    }
+    
+    func noise(x: CGFloat, y: CGFloat, t: CGFloat = 101) -> CGFloat {
+        let w0 = 0.1 * sin(0.3 * x + 1.4*t + 2.0 + 2.5*sin(0.4*y - 1.3*t + 1.0))
+        
+        let w1 = 0.1 * sin(0.2*y + 1.5*t + 2.8 + 2.3*sin(0.5*x - 1.2*t + 0.5))
+        return w0 + w1
     }
     
 }
