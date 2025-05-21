@@ -1,9 +1,3 @@
-//
-//  BackgroundView.swift
-//  Game Of Life
-//
-//  Created by Pankaj Kumar Rana on 5/19/25.
-//
 
 
 import SwiftUI
