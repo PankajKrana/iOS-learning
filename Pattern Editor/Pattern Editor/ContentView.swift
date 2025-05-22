@@ -22,11 +22,30 @@ struct ContentView: View {
     
     var body: some View {
         HStack {
-            // TODO: Pattern Editer
+            PatternEditor()
             
-            Text("Hello, world!")
+            CodePreview()
+                        
         }
         .padding()
+        .frame(minWidth: 800, minHeight: 600)
+    }
+}
+
+struct PatternEditor: View {
+    var body: some View {
+        // TODO: Pattern Editer
+        Text("Pattern Editor")
+
+    }
+}
+
+struct CodePreview: View {
+    var body: some View {
+        // TODO: Code Preview
+        
+        Text("Code Preview")
+
     }
 }
 
