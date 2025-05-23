@@ -54,30 +54,27 @@ struct BoardModel {
         let safeCol = (j + gridSize) % gridSize
         self.creatures[safeRow][safeCol]
     }
+    
+    mutating func applyDesignPattern(
+        row: Int,
+        col: Int,
+        designType: DesignType,
+        swapXY: Bool
+    ) {
+        
+        if self.creatures[row][col] == 0 {
+            for offset in designType.offsetDesign {
+                let dx = swapXY ? offset.x : offset.y
+                let dy = swapXY ? offset.y : offset.x
+                
+                safelyAssignCreatureState(
+                    i: row + dx,
+                    j: col + dy,
+                    state: 1
+                )
+            }
+        }
+    }
+    
 }
 
-enum DesignType: String, CaseIterable {
-    case block , beehive, load , boat, tub // Still life
-    case blinker, toad, beacon, petaDecathlon // Oscillators
-    case glider, LWSS, MWSS, HWSS // Space Ship
-    
-    var offsetDesign: [(x: Int, y: Int)] {
-        switch self {
-        case .block: return [
-            (0, -1 ),
-            (1, -1 ),
-            (0, 0 ),
-            (1, 0 ),
-        ]
-        case .beehive: return [
-            (-1, -1 ),
-            (0, -1 ),
-            (-2, 0 ),
-            (1, 0 ),
-            (-1, 1 ),
-            (0, 1 ),
-        ]
-            
-            
-    }
-}
