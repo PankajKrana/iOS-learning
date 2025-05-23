@@ -12,11 +12,24 @@ extension String {
         
         guard !self.isEmpty else { return false }
         
+        // Start with a letter or underscore
+        let firstCharacter = self.first!
+        if !firstCharacter.isLetter && firstCharacter != "_" {
+            return false
+        }
+        
+        // Remaining character is letter , digits or underscore
+        let validCharacter = self
+            .allSatisfy {
+                $0.isLetter || $0.isNumber || $0 == "_"
+            }
+        
+        if !validCharacter {
+            return false 
+        }
+        
+        
         return true
-        // TODO: Text for:
-        /// 1. Not a swift keyword
-        /// 2. Starts with the latter or underscore
-        /// 3. Remaining character is latter, digits or underscore
-        /// 4.
+    
     }
 }
