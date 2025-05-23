@@ -61,37 +61,23 @@ enum DesignType: String, CaseIterable {
     case blinker, toad, beacon, petaDecathlon // Oscillators
     case glider, LWSS, MWSS, HWSS // Space Ship
     
-//    var offsetDesign: [(x: Int, y: Int)] {
-//        switch self {
-//            
-//        case .block:
-//            return [
-//                
-//            ]
-//        case .beehive:
-//            return []
-//        case .glider:
-//            return []
-//        case .load:
-//            return []
-//        case .boat:
-//            return []
-//        case .blinker:
-//            return []
-//        case .tub:
-//            return []
-//        case .toad:
-//            return []
-//        case .LWSS:
-//            return []
-//        case .beacon:
-//            return []
-//        case .petaDecathlon:
-//            return []
-//        case .MWSS:
-//            return []
-//        case .HWSS:
-//            return []
-//        }
-//    }
+    var offsetDesign: [(x: Int, y: Int)] {
+        switch self {
+        case .block: return [
+            (0, -1 ),
+            (1, -1 ),
+            (0, 0 ),
+            (1, 0 ),
+        ]
+        case .beehive: return [
+            (-1, -1 ),
+            (0, -1 ),
+            (-2, 0 ),
+            (1, 0 ),
+            (-1, 1 ),
+            (0, 1 ),
+        ]
+            
+            
+    }
 }

@@ -14,7 +14,8 @@ struct ContentView: View {
     
     var codeString: String {
         """
-        case .\(name): return [\(formattedPoints)]
+        case .\(name): return
+        [\(formattedPoints)]
         """
     }
     
