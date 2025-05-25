@@ -36,7 +36,7 @@ struct BoardModel {
             (-1,-1), (0, -1), (1, -1),
             (-1, 0), (1, 0),
             (-1,1), (0, 1), (1, 1),
-
+            
         ]
         
         var count = 0
@@ -49,7 +49,7 @@ struct BoardModel {
         return count
     }
     
-     mutating func safelyAssignCreatureState(i: Int, j: Int, state: Int) {
+    mutating func safelyAssignCreatureState(i: Int, j: Int, state: Int) {
         let safeRow = (i + gridSize) % gridSize
         let safeCol = (j + gridSize) % gridSize
         self.creatures[safeRow][safeCol]
@@ -75,6 +75,32 @@ struct BoardModel {
             }
         }
     }
+    
+    mutating func newGeneration(){
+        var newCreature = self.creatures
+        
+        for row in 0..<gridSize{
+            for col in 0..<gridSize {
+                let liveNeighbors = countLiveNeighbours(row: row, col: col)
+                // Apply rules
+                
+                // Living creature either dies from loneliness or overcrowded
+                if self.creatures[row][col] == 1 {
+                    if liveNeighbors < 2 || liveNeighbors > 3 {
+                        newCreature[row][col] = 0 // Creature dies
+                    }
+                } else { // Case where there is no creatures present
+                    // Creature is born?
+                    if liveNeighbors == 3 {
+                        newCreature[row][col] = 1
+                    }
+                }
+            }
+        }
+        
+        self.creatures = newCreature
+    }
+    
     
 }
 

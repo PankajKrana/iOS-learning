@@ -2,7 +2,7 @@ import SwiftUI
 
 struct BoardView: View {
     let gridSize = 50
-    let color: Color = .red
+    let color: Color = .red.opacity(0.8)
     
     @Binding var board: BoardModel
     @Binding var selectedDesign: DesignType
@@ -16,6 +16,16 @@ struct BoardView: View {
             
             let cellSize = canvasSize / CGFloat(gridSize)
             ZStack {
+                if showImage {
+                    Image(currentImage)
+                        .resizable()
+                        .opacity(0.8)
+
+                } else {
+                    Color.black
+                }
+                
+                                
                 CreatureGrid(
                     creatures: $board.creatures,
                     gridSize: gridSize,
@@ -34,15 +44,16 @@ struct BoardView: View {
                         )
                     
                 }
-                .clipShape(.rect(cornerRadius: 10))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(lineWidth: 1)
-                }
-                .frame(width: canvasSize, height: canvasSize)
-                .frame(maxHeight: .infinity)
-                .shadow(radius: 3)
             }
+            .clipShape(.rect(cornerRadius: 10))
+            .overlay {
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(lineWidth: 1)
+            }
+            .frame(width: canvasSize, height: canvasSize)
+            .frame(maxHeight: .infinity)
+            .shadow(radius: 3)
+            
         }
         
     }
@@ -50,12 +61,22 @@ struct BoardView: View {
 
 
 #Preview {
-    BoardView(
-        board: .constant(BoardModel(gridSize: 50)),
-        selectedDesign: .constant(.tub),
-        swapXY: .constant(false),
-        currentImage: .constant(.mountain1),
-        showImage: .constant(true)
-    )
+    VStack {
+        BoardView(
+            board: .constant(BoardModel(gridSize: 50)),
+            selectedDesign: .constant(.tub),
+            swapXY: .constant(false),
+            currentImage: .constant(.mountain1),
+            showImage: .constant(true)
+        )
+        BoardView(
+            board: .constant(BoardModel(gridSize: 50)),
+            selectedDesign: .constant(.tub),
+            swapXY: .constant(false),
+            currentImage: .constant(.mountain1),
+            showImage: .constant(false)
+        )
+
+    }
     .padding()
 }

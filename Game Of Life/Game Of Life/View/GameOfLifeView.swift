@@ -8,6 +8,23 @@ struct GameOfLifeView: View {
     @State private var swapXY:Bool = false
     @State private var currentImage: ImageResource = .mountain1
     @State private var showImage:Bool = true
+    @State private var isPlaying = true
+    
+    @State private var timer: Timer?
+    let MIN_SECONDS: Double = 0.01
+    let MAX_SECONDS: Double = 3.0
+    let MAX_SPEED: Double = 10.0
+    var MAX_TIME: Double {
+        MAX_SPEED / 2
+    }
+    
+    var a: Double {
+        (MIN_SECONDS - MAX_SECONDS) / MAX_SPEED
+    }
+    
+    var speed: Double {
+        1 / a * (MAX_TIME - MAX_SPEED)
+    }
     var body: some View {
         ZStack {
             BackgroundView()
@@ -34,6 +51,29 @@ struct GameOfLifeView: View {
             }
             .padding()
         }
+        .onAppear {
+            // Start Game
+            startGame()
+        }
+        .onChange(of: speed) { _, newSpeed in
+            // Reset to speed to new speed
+        }
+    }
+    
+    func startGame() {
+        timer?.invalidate() // Stop existing timer
+        timer = Timer.scheduledTimer(
+            withTimeInterval: 1 / speed,
+            repeats: true,
+            block: { _ in
+                withAnimation {
+                    if isPlaying{
+                        // Next Generation
+                        board.newGeneration()
+                    }
+                }
+            }
+        )
     }
 }
 
