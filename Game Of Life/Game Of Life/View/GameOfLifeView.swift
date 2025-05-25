@@ -2,6 +2,12 @@
 import SwiftUI
 
 struct GameOfLifeView: View {
+    
+    @State private var board: BoardModel = BoardModel(gridSize: 50)
+    @State private var selectedDesign: DesignType = .tub
+    @State private var swapXY:Bool = false
+    @State private var currentImage: ImageResource = .mountain1
+    @State private var showImage:Bool = true
     var body: some View {
         ZStack {
             BackgroundView()
@@ -11,8 +17,14 @@ struct GameOfLifeView: View {
                 TitleView()
                 Spacer()
                 
-                // Boards
-                BoardView()
+                BoardView(
+                    board: $board,
+                    selectedDesign: $selectedDesign,
+                    swapXY: $swapXY,
+                    currentImage: $currentImage,
+                    showImage: $showImage
+                )
+
                 
                 Spacer()
                 
