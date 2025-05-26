@@ -5,8 +5,6 @@
 //  Created by Pankaj Kumar Rana on 5/23/25.
 //
 
-
-
 enum DesignType: String, CaseIterable {
     case block, beehive, loaf, boat, tub // Still life
     case blinker, toad, beacon, pulsar, pentaDecathlon // Oscillators
@@ -224,4 +222,9 @@ enum DesignType: String, CaseIterable {
             ]
         }
     }
+    
+    static let stillLifeDesign: [DesignType] = [ .block, .beehive, .loaf, .boat, .tub]
+    static let oscillatorsDesign: [DesignType] = [ .blinker, .toad, .beacon, .pulsar, .pentaDecathlon ]
+    static let spaceShipDesign: [DesignType] = [ .glider, .LWSS, .MWSS, .HWSS ]
+    
 }

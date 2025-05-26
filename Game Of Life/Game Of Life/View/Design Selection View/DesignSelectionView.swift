@@ -28,18 +28,42 @@ struct DesignSelectionView: View {
             }
         // TODO: Design selection scrollview
             ScrollView(.horizontal) {
-                Text("TODO: .....")
-                
+                HStack(spacing: 8) {
+                    ForEach(DesignType.allCases, id: \.self) { design in
+                        Button {
+                            withAnimation {
+                                selectedDesign = design
+                            }
+                        } label: {
+                            // TODO: ButtonView
+                            Text("\(design)")
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(color(for: design))
+                        .scaleEffect(selectedDesign == design ? 1.05 : 1.0)
+                        .shadow(radius: selectedDesign == design ? 5 : 0)
+                    }
+                }
+                .padding(.vertical, 5)
+                .padding(.horizontal, 10)
             }
+            .scrollIndicators(.hidden)
             
 
         }
+        .shadow(radius: 8)
     }
     
-    // TODO: Implement based on design category
     private func color(for design: DesignType ) -> Color {
         
-        return .red
+        if DesignType.stillLifeDesign.contains(design) {
+            .blue
+        } else if DesignType.oscillatorsDesign.contains(design) {
+            .green
+        } else {
+            .red
+        }
+        
     }
 }
 

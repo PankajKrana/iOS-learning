@@ -47,7 +47,10 @@ struct GameOfLifeView: View {
                 
                 Spacer()
                 
-                // Control
+                DesignSelectionView(
+                    selectedDesign: $selectedDesign,
+                    swapXY: $swapXY
+                )
                 
                 ControleView()
                 
