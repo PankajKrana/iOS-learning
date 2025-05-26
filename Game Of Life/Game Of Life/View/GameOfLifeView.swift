@@ -22,9 +22,11 @@ struct GameOfLifeView: View {
         (MIN_SECONDS - MAX_SECONDS) / MAX_SPEED
     }
     
-    var speed: Double {
-        1 / a * (MAX_TIME - MAX_SPEED)
-    }
+//    var speed: Double {
+//        1 / a * (MAX_TIME - MAX_SPEED)
+//    }
+    
+    @State private var speed = 200.0
     var body: some View {
         ZStack {
             BackgroundView()
@@ -48,6 +50,7 @@ struct GameOfLifeView: View {
                 // Control
                 
                 ControleView()
+                
             }
             .padding()
         }
@@ -55,8 +58,8 @@ struct GameOfLifeView: View {
             // Start Game
             startGame()
         }
-        .onChange(of: speed) { _, newSpeed in
-            // Reset to speed to new speed
+        .onChange(of: speed) { _, _ in
+            resetSpeed()
         }
     }
     
@@ -74,6 +77,22 @@ struct GameOfLifeView: View {
                 }
             }
         )
+    }
+    
+    func stopGame() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    func resetSpeed() {
+        stopGame()
+        startGame()
+    }
+    
+    // Reset Board and timer
+    func resetGame() {
+        board.clearBpard()
+        stopGame()
     }
 }
 
