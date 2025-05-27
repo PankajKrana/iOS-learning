@@ -30,18 +30,22 @@ struct DesignSelectionView: View {
             ScrollView(.horizontal) {
                 HStack(spacing: 8) {
                     ForEach(DesignType.allCases, id: \.self) { design in
+                        
+                        
+                        
+                        
                         Button {
                             withAnimation {
                                 selectedDesign = design
                             }
                         } label: {
-                            // TODO: ButtonView
-                            Text("\(design)")
+                            DesignButton(
+                                design: design,
+                                color: color(for: design),
+                                selectedDesign: selectedDesign
+                            )
+                            
                         }
-                        .buttonStyle(.borderedProminent)
-                        .tint(color(for: design))
-                        .scaleEffect(selectedDesign == design ? 1.05 : 1.0)
-                        .shadow(radius: selectedDesign == design ? 5 : 0)
                     }
                 }
                 .padding(.vertical, 5)
