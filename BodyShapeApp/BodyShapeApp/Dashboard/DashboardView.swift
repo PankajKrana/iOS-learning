@@ -1,21 +1,26 @@
-//
-//  ContentView.swift
-//  BodyShapeApp
-//
-//  Created by Pankaj Kumar Rana on 5/27/25.
-//
 
 import SwiftUI
 
 struct DashboardView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            IconRight(imageName: "circle.grid.cross.fill", angle: 45)
+                .padding()
+            
+            VStack(alignment: .leading, spacing: 20) {
+                WelcomeMessageView(userName: "Emily")
+                
+                WeightView(
+                    weight: 61.2,
+                    weightUnits: "lb"
+                )
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding() 
+            
+            Spacer()
+
         }
-        .padding()
     }
 }
 
