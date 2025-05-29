@@ -14,6 +14,12 @@ struct DashboardView: View {
                     weight: 61.2,
                     weightUnits: "lb"
                 )
+                
+                DataSummaryView(arrow: "arrow.down", calories: "4.569")
+                
+                Spacer()
+                
+                ButtonsView()
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding() 

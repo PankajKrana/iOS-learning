@@ -6,7 +6,7 @@ struct WeightView: View {
     let weightUnits: String
     
     var body: some View {
-        HStack {
+        HStack(spacing: 50) {
             VStack {
                 HStack {
                     Text("\(weight, specifier: "%.2f")")
@@ -34,17 +34,19 @@ struct WeightView: View {
                         .fontWeight(.semibold)
 
                 }
-                Rectangle()
-                    .fill(Color.green)
-                    .frame(width: screenWidth / 2,height: 10)
+                FillBarView(
+                    barWidth: 7,
+                    colorBG: .black,
+                    colorFill: lightGreen,
+                    percentage: 0.3
+                )
 
                                 
                 Text("Left To Grain")
                     .font(.subheadline)
                     .foregroundStyle(.gray)
             }
-        }
-        
+        }        
             
     }
 }
