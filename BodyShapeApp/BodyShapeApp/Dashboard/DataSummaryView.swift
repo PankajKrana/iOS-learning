@@ -21,6 +21,7 @@ struct DataSummaryView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
+                // First Row
                 HStack(spacing: 15) { // First Row
                     RoundedRectangle(cornerRadius: 20)
                         .fill(lightPurple)
@@ -72,9 +73,49 @@ struct DataSummaryView: View {
                 }
                 .frame(height: geometry.size.width * (1-percent1) - delta)
 
+                // Second Row
                 
-                
-                
+                HStack(spacing: 15) {
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(.black)
+                        .frame(width: geometry.size.width * percent2 - delta, height: geometry.size.width * percent2 - delta)
+                        .overlay(
+                            Text("Start")
+                                .fontWeight(.bold)
+                                .foregroundStyle(Color.white)
+                            
+                        )
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(.black, lineWidth: 1)
+                        .overlay(
+                            VStack(alignment: .leading) {
+                                Text("Members")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                HStack(spacing: -10) {
+                                   let extraPeople = min(peopleImages.count, 2)
+                                    let circleDim = 45.0
+                                    
+                                    ForEach(0..<extraPeople, id: \.self) { i in
+                                        Circle()
+                                            .frame(width: circleDim)
+                                        
+                                    }
+                                    
+                                    if peopleImages.count > 2 {
+                                        Text("\(peopleImages.count - extraPeople)")
+                                            .foregroundStyle(Color.white)
+
+                                    }
+                                    
+                                }
+                                 
+                                
+                            }
+                            
+                        )
+                }.frame(height: geometry.size.width * percent2 - delta)
+
             }
         }
     }
