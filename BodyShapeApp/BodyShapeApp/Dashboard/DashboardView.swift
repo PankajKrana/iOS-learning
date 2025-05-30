@@ -15,7 +15,7 @@ struct DashboardView: View {
                     weightUnits: "lb"
                 )
                 
-                DataSummaryView(arrow: "arrow.down", calories: "4.569")
+                DataSummaryView(arrow: "arrow.down", calories: "4.569", numberOfPeopleShowing: 2)
                 
                 Spacer()
                 

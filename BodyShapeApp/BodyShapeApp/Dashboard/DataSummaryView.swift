@@ -16,8 +16,12 @@ struct DataSummaryView: View {
     let percent2 = 0.4
     
     let peopleImages = [
+        person1, person2, person3, person4,
         person1, person2, person3, person4
+
     ]
+    
+    let numberOfPeopleShowing: Int
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -93,19 +97,25 @@ struct DataSummaryView: View {
                                     .font(.subheadline)
                                     .fontWeight(.semibold)
                                 HStack(spacing: -10) {
-                                   let extraPeople = min(peopleImages.count, 2)
+                                   let extraPeople = min(peopleImages.count, numberOfPeopleShowing)
                                     let circleDim = 45.0
                                     
                                     ForEach(0..<extraPeople, id: \.self) { i in
-                                        Circle()
-                                            .frame(width: circleDim)
-                                        
-                                    }
-                                    
-                                    if peopleImages.count > 2 {
-                                        Text("\(peopleImages.count - extraPeople)")
-                                            .foregroundStyle(Color.white)
+                                        CircleImageView(
+                                            imageName: peopleImages[i],
+                                            color: .white,
+                                            size: circleDim,
+                                            lineWidth: 1
+                                        )
 
+                                    }
+                                    if peopleImages.count > 2 {
+                                        CircleCountView(
+                                            count: peopleImages.count - extraPeople,
+                                            size: circleDim,
+                                            lineWidth: 1,
+                                            color: .black
+                                        )
                                     }
                                     
                                 }
@@ -122,6 +132,6 @@ struct DataSummaryView: View {
 }
 
 #Preview {
-    DataSummaryView(arrow: "arrow.down", calories: "4.569")
+    DataSummaryView(arrow: "arrow.down", calories: "4.569", numberOfPeopleShowing: 2)
 
 }
