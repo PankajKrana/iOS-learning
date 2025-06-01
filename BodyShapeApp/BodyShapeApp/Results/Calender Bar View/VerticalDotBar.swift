@@ -17,6 +17,7 @@ struct VerticalDotBar: View {
     let selectedWeight: Int
     var selectedWeightUnit: String = "lb"
     let circleDim = 8.0
+    let delta = 10.0
     
     
     var body: some View {
@@ -30,7 +31,7 @@ struct VerticalDotBar: View {
                     Text("\(selectedWeightUnit)")
                 }
                 .padding(.vertical, 30)
-//                .frame(minWidth: 70, minHeight: 70)
+                //                .frame(minWidth: 70, minHeight: 70)
             }
             
             ZStack(alignment: .bottom) {
@@ -43,13 +44,13 @@ struct VerticalDotBar: View {
                     if isSelected {
                         Circle()
                             .fill(lightGreen)
-                            .frame(width: circleDim + 10, height: circleDim + 10)
-                            .offset(y: -height * percent)
+                            .frame(width: circleDim + delta, height: circleDim + delta)
+                            .offset(y: -(height - circleDim) * percent)
                     }
                     
                     Circle()
                         .frame(width: circleDim, height: circleDim)
-                        .offset(y: -height * percent)
+                        .offset(y: -(height - circleDim) * percent)
                 }
                 
             }
@@ -59,14 +60,28 @@ struct VerticalDotBar: View {
 }
 
 #Preview {
-    VerticalDotBar(
-        percent: 0.6,
-        isSelected: true,
-        height: 100,
-        day: "Mon",
-        amount: 7,
-        offsetY: -5,
-        selectedWeight: 12
-    )
-    .padding()
+    HStack(alignment: .bottom) {
+        VerticalDotBar(
+            percent: 0.6,
+            isSelected: false,
+            height: 100,
+            day: "Mon",
+            amount: 7,
+            offsetY: -5,
+            selectedWeight: 12
+        )
+        .padding()
+        
+        VerticalDotBar(
+            percent: 1,
+            isSelected: true,
+            height: 100,
+            day: "Tue",
+            amount: 7,
+            offsetY: -5,
+            selectedWeight: 12
+        )
+        .padding()
+        
+    }
 }
