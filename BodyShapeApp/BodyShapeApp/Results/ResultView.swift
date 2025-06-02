@@ -10,8 +10,7 @@ import SwiftUI
 struct ResultView: View {
     let selectedWeightUnits = "lb"
     var body: some View {
-        VStack(spacing: 30) { // TODO: Change this value
-            VStack(spacing: 0) {
+        VStack {             VStack(spacing: 0) {
                 ResultsTopRow()
                     .padding()
                 
@@ -52,25 +51,32 @@ struct ResultView: View {
                 
             }
             
-            Text("MAIN ACTIVITIES")
+            VStack(spacing: 0) {
+                MainActivitesView(activities: [
+                    .init(dim: 150, activityName: "Running", activityImage: "figure.run"),
+                    .init(dim: 150, activityName: "Biking", activityImage: "figure.outdoor.cycle"),
+                    .init(dim: 150, activityName: "Climbing", activityImage: "figure.climbing"),
+                    .init(dim: 150, activityName: "Skating", activityImage: "figure.skating")
+                ])
+                
+                HStack {
+                    Text("Your plan for December, 2022")
+                    
+                    Spacer()
+                    
+                    Text("1.8")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    
+                    Text(selectedWeightUnits)
+                    
+                }.padding(.horizontal)
+
+            }
             
-            HStack {
-                Text("Your plan for December, 2022")
-                
-                Spacer()
-                
-                Text("1.8")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                
-                Text(selectedWeightUnits)
-                
-            }.padding(.horizontal)
-            
-            Text("HEART GRID ROW")
+            HeartRateRow()
             
             // CONTINUE BUTTON
-            // Capsule Button
             Button(action: {
                 print("Button pressed")
             }, label: {
