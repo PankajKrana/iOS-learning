@@ -8,13 +8,8 @@
 import SwiftUI
 
 struct CurrentActivitiesView: View {
-    var body: some View {
-        VStack {
-            ResultsTopRow()
-                .padding()
-            
-            Spacer()
-        }
+    var body: some View{
+        Text("Hello World")
     }
 }
 

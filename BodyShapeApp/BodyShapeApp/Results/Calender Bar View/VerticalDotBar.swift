@@ -11,8 +11,6 @@ struct VerticalDotBar: View {
     let percent: CGFloat
     let isSelected: Bool
     let height: CGFloat
-    let day: String
-    let amount: Int
     let offsetY: CGFloat
     let selectedWeight: Int
     var selectedWeightUnit: String = "lb"
@@ -46,11 +44,14 @@ struct VerticalDotBar: View {
                             .fill(lightGreen)
                             .frame(width: circleDim + delta, height: circleDim + delta)
                             .offset(y: -(height - circleDim) * percent)
+                            .offset(y: -offsetY)
                     }
                     
                     Circle()
                         .frame(width: circleDim, height: circleDim)
                         .offset(y: -(height - circleDim) * percent)
+                        .offset(y: -offsetY)
+
                 }
                 
             }
@@ -65,8 +66,6 @@ struct VerticalDotBar: View {
             percent: 0.6,
             isSelected: false,
             height: 100,
-            day: "Mon",
-            amount: 7,
             offsetY: -5,
             selectedWeight: 12
         )
@@ -76,8 +75,6 @@ struct VerticalDotBar: View {
             percent: 1,
             isSelected: true,
             height: 100,
-            day: "Tue",
-            amount: 7,
             offsetY: -5,
             selectedWeight: 12
         )

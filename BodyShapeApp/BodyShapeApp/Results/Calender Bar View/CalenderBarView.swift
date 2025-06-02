@@ -28,13 +28,43 @@ struct CalenderBarView: View {
     let selectedDim = 70.0
     
     var body: some View {
-        Rectangle()
-            .stroke(
-                style: StrokeStyle(
-                    lineWidth: 0.2,
-                    lineCap: .square,
-                    dash: [1,5]))
-            .frame(height: 1)
+        VStack {
+            ZStack {
+                Rectangle()
+                    .stroke(
+                        style: StrokeStyle(
+                            lineWidth: 0.2,
+                            lineCap: .square,
+                            dash: [1,5]))
+                    .frame(height: 1)
+                
+                HStack(alignment: .bottom) {
+                    ForEach(dailyData) { data in
+                        VerticalDotBar(percent: data.percentage, isSelected: data.day == selectedDay, height: height, offsetY: offsetY, selectedWeight: data.amount)
+                            .frame(maxWidth: .infinity)
+                    }
+                }
+                .offset(y: 100 / 2 - 48)
+                
+            }
+            
+            HStack(alignment: .bottom) {
+                ForEach(dailyData) { data in
+                    VStack {
+                        Text(data.day)
+                            .frame(maxWidth: .infinity)
+                        
+                        Text("\(data.amount, specifier: "%02d")")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .fontWeight(data.day == selectedDay ? .bold : .regular)
+
+
+                    
+                }
+            }
+
+        }
     }
 }
 
@@ -58,7 +88,7 @@ struct CalenderBarView: View {
             ),
             .init(
                 day: "Thu",
-                percentage: 0.0,
+                percentage: 1,
                 amount: 12
             ),
             .init(
