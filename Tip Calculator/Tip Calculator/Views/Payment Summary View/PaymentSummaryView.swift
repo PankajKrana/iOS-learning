@@ -13,17 +13,35 @@ struct PaymentSummaryView: View {
     let bill: Double
     
     
-    // TODO: Calculate based on input
+    var tip: Double {
+        bill * Double(tipPercentage) / 100.0
+    }
+    
+    var total: Double {
+       bill + tip
+    }
+    
+    let formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        return formatter
+    }()
+
+    func formattedAmount(value: Double, split: Int) -> String {
+        let newValue = value / Double(split)
+        return formatter.string(from: NSNumber(value: newValue)) ?? "$0"
+    }
+    
     var totalPerPerson: String {
-        "300"
+        formattedAmount(value: total, split: split)
     }
     
     var billPerPerson: String {
-        "250"
+        formattedAmount(value: bill, split: split)
     }
     
     var tipPerPerson: String {
-        "50"
+        formattedAmount(value: tip, split: split)
     }
     
     // iPad Support
@@ -87,9 +105,9 @@ struct PaymentSummaryView: View {
         RoundedRectangle(cornerRadius: 20)
             .fill(.blue.opacity(0.4))
         PaymentSummaryView(
-            tipPercentage: 20,
-            split: 2,
-            bill: 500
+            tipPercentage: 10,
+            split: 3,
+            bill: 100
         )
     }
     .padding()
