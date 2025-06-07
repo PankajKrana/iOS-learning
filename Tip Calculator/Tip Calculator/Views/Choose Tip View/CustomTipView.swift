@@ -13,17 +13,17 @@ struct CustomTipView: View {
     
     @FocusState private var focusState: Bool
     
-    var isSelected:Bool {
+    var isSelected: Bool {
         selectedTip == tipPercentage
     }
+    
     var fgColor: Color {
         isSelected ? .myDarkGreen : .white
-        
+    }
+    var bgColor: Color {
+        isSelected ? .white : .myDarkGreen
     }
     
-    var bgColor: Color {
-        .white
-    }
     var body: some View {
         ZStack(alignment: .bottom) {
             TextField(
@@ -42,18 +42,11 @@ struct CustomTipView: View {
             .padding()
             .background(bgColor.opacity(0.7))
             .clipShape(Capsule())
-            .shadow(
-                color: fgColor.opacity(0.3),
-                radius: 3,
-                x: 2,
-                y: 2
-            )
+            .shadow(color: fgColor.opacity(0.3), radius: 3, x: 2, y: 2)
             
             Text("Custom")
                 .font(.caption)
                 .foregroundStyle(.secondary)
-            
-            
         }
     }
 }
@@ -61,6 +54,6 @@ struct CustomTipView: View {
 #Preview {
     CustomTipView(
         selectedTip: .constant(5),
-        tipPercentage:.constant(20)
+        tipPercentage: .constant(TipPercentage.twenty.rawValue)
     )
 }
