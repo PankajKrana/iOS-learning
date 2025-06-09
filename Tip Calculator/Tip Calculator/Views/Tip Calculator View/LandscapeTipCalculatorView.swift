@@ -1,13 +1,13 @@
 //
-//  TipCalculatorView.swift
+//  LandscapeTipCalculatorView.swift
 //  Tip Calculator
 //
-//  Created by Pankaj Kumar Rana on 6/3/25.
+//  Created by Pankaj Kumar Rana on 6/9/25.
 //
 
 import SwiftUI
 
-struct TipCalculatorView: View {
+struct LandscapeTipCalculatorView: View {
     @State private var tipModel: TipModel = TipModel(tipPercentage: 20, split: 1, bill: 0.0)
     @State private var isFocused: Bool = false
     
@@ -18,27 +18,25 @@ struct TipCalculatorView: View {
         ZStack {
             BackgroundView()
             
-            VStack {
-
-                TitleView()
-                Spacer()
-                
+            HStack {
                 VStack(alignment: .leading) {
+                    TitleView()
+                    
                     EnterTotalView(bill: $tipModel.bill, isFocused: $isFocused)
                     
-                    
-                    ChooseTipView(tipPercentage: $tipModel.tipPercentage)
-                }
+                    HStack {
+                        ChooseTipView(tipPercentage: $tipModel.tipPercentage)
 
-                SplitView(split: $tipModel.split, alignment: .leading)
-                
+                        SplitView(split: $tipModel.split, alignment: .center)
+                    }
+
+                }
                 
                 Spacer()
                 
-                if !isFocused {                    
+                if !isFocused {
                     PaymentSummaryView(tipModel: tipModel)
-                    
-                    Spacer()
+
                 }
             }
             .padding()
@@ -51,9 +49,8 @@ struct TipCalculatorView: View {
                 for: nil
             )
         }
-    }
-}
+    }}
 
-#Preview {
-    TipCalculatorView()
+#Preview("Landscape", traits: .landscapeLeft) {
+    LandscapeTipCalculatorView()
 }
