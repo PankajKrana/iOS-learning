@@ -136,7 +136,9 @@ struct ActivityView: View {
             .padding()
             .navigationTitle("Activity Tracker")
             .toolbar { EditButton()
-                    .onChange(of: selectCount, <#T##(V, V) -> Void#>)
+                    .onChange(of: selectCount) { item, V in
+                        
+                    }
             }
         }
     }
