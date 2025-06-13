@@ -39,6 +39,7 @@ struct FillBarView: View {
                 
             }
         }
+        .frame( height: barWidth)
     }
 }
 
