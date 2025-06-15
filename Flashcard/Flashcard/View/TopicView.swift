@@ -8,19 +8,22 @@
 import SwiftUI
 
 struct TopicView: View {
+    var flashCardViewModel = FlashCardViewModel()
+    
     var body: some View {
         NavigationStack {
-            VStack {
-                Image(.imgPeaceful3)
-                    .resizable()
-                    .frame(width: 200, height: 200)
-                    .clipShape(.rect(cornerRadius: 15))
-                    .shadow(radius: 3)
-                
-               Text("Todo....")
-                
+            List(flashCardViewModel.flashCardModels) { flashCardModel in
+                NavigationLink {
+                    QuestionsView(questionModels: flashCardModel.questionModel, topic: flashCardModel.topic, numberOfQuestions: flashCardModel.numberOfQuestions)
+                        .navigationBarBackButtonHidden()
+                        .navigationBarTitleDisplayMode(.inline)
+                } label: {
+                    FlashItemRow(flashcardModel: flashCardModel)
+                }
+
             }
-            .navigationTitle("FlashCard")        }
+            .navigationTitle("FlashCard")
+        }
     }
 }
 
