@@ -9,16 +9,29 @@ import SwiftUI
 
 struct FlashItemRow: View {
     let flashcardModel: FlashcardModel
-    var imageSize = 60.0
+    var imageSize: CGFloat {
+        UIDevice.isIPad ? 80.0 : 60.0
+    }
+    
+    var topicFont: Font {
+        UIDevice.isIPad ? .largeTitle : .body
+    }
+    var topicWeight: Font.Weight {
+        UIDevice.isIPad ? .bold : .semibold
+    }
+    
+    var topicDescriptionFont: Font {
+        UIDevice.isIPad ? .title : .caption
+    }
     
     var body: some View {
         HStack {
-            VStack( spacing: 10) {
+            VStack(alignment: .leading ,spacing: 10) {
                 Text(flashcardModel.topic)
-                    .font(.body)
-                    .fontWeight(.semibold)
+                    .font(topicFont)
+                    .fontWeight(topicWeight)
                 Text(flashcardModel.topicDescription)
-                    .font(.caption)
+                    .font(topicDescriptionFont)
                     .fontWeight(.light)
                 
             }
