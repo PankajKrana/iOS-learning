@@ -11,7 +11,7 @@ import SwiftUI
 struct Mystic_PuzzleApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MysticPuzzleView()
         }
     }
 }
