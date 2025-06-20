@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct MysticPuzzleView: View {
     @StateObject var mysticPuzzleViewModel: MysticPuzzleViewModel = MysticPuzzleViewModel()
@@ -14,14 +15,12 @@ struct MysticPuzzleView: View {
     var body: some View {
         ZStack {
             // background color
-            Color(.blue).opacity(0.3).ignoresSafeArea()
-            
+            Image("WaterBackground").opacity(0.7).ignoresSafeArea()
             VStack {
                 Text( title)
-                    .font(.largeTitle)
+                    .font(Font.custom("ChalkboardSE", size: 48))
                     .fontWeight(.bold)
-                    .padding()
-                
+                    .foregroundStyle(.white)
                 ZStack {
                     
                     let tiles = mysticPuzzleViewModel.mysticPuzzleModel.tiles
@@ -32,6 +31,18 @@ struct MysticPuzzleView: View {
                     }
                     
                 }
+                .frame(width: titleDimension * 4, height: titleDimension * 4)
+                .padding()
+                .background(
+                    Image("BlueMarbleBackground")
+                        .resizable()
+                        .opacity(0.9)
+                )
+                .cornerRadius(20)
+                .padding()
+                .padding(.vertical)
+                .shadow(color: .black, radius: 10, x: 3, y: 3)
+
             }
         }
     }
@@ -46,7 +57,7 @@ struct TitleView: View {
     let titleDimension: CGFloat
     let offset: CGPoint
     let somePadding: CGFloat = 3
-    let digitRasizeFactor: CGFloat = 5/2
+    let digitRasizeFactor: CGFloat = 0.8
 
     var body: some View {
         let direction = offset * titleDimension
@@ -58,7 +69,8 @@ struct TitleView: View {
             .renderingMode(.template)
             .foregroundStyle(.red)
             .aspectRatio(contentMode: .fit)
-            .frame(width: titleDimension, height: titleDimension)
+            .frame(width: titleDimension*digitRasizeFactor, height: titleDimension*digitRasizeFactor)
+            .scaleEffect(titleNumber < 10 || titleNumber < 11 ? 0.8 : 1)
             .padding()
             .background(
                 Color.gray.frame(width: titleDimension - somePadding, height: titleDimension - somePadding)
