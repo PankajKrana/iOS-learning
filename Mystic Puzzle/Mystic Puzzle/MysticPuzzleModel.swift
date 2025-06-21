@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Foundation
 
 struct TileModel: Identifiable, Codable  {
     let id: UUID
@@ -38,6 +37,4 @@ let LEFT = CGPoint(x: -1, y: 0)
 let RIGHT = CGPoint(x: 1, y: 0)
 let UP = CGPoint(x: 0, y: -1)
 let DOWN = CGPoint(x: 0, y: 1)
-
-
 
