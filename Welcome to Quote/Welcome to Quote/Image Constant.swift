@@ -6,3 +6,6 @@
 //
 
 import Foundation
+let eclipse = "Eclipse"
+let simpleEclipse = "Simple Eclipse"
+let fireSample = "FireSample"
