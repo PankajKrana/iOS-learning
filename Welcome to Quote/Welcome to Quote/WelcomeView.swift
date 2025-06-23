@@ -18,16 +18,15 @@ struct WelcomeView: View {
                     .scaledToFit()
                 
                 Spacer()
-                Text("Welcome Quotes")
-                
+                WelcomeQuotes()
                 Spacer()
                 Text("NormalTextView")
                 
                 Spacer()
                 
                 Spacer()
-                Text("GotoNextView")
-                
+                GotoNextView(text: "Generate Quote")
+
                 Spacer()
                 
             }
