@@ -20,7 +20,8 @@ struct WelcomeView: View {
                 Spacer()
                 WelcomeQuotes()
                 Spacer()
-                Text("NormalTextView")
+                NormalTextView(text: "Welcome to your daily dose of inspiration")
+
                 
                 Spacer()
                 
