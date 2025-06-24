@@ -8,16 +8,24 @@
 import SwiftUI
 
 struct MainView: View {
+    @State private var selectedTab = "One"
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView(selection: $selectedTab) {
+            
+            Text("WelcomeView")
+
+            
+            Text("QuoteView")
+            
+            Text("SelectImageView")
         }
-        .padding()
+        .tabViewStyle(
+            .page(indexDisplayMode: .always)
+        )
+        .ignoresSafeArea()
     }
 }
+
 
 #Preview {
     MainView()
