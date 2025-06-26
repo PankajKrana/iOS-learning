@@ -11,7 +11,7 @@ import SwiftUI
 struct QuoteADayApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            QuoteView()
         }
     }
 }
