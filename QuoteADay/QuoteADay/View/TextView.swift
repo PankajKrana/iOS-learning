@@ -24,13 +24,13 @@ struct BigTextView: View {
 }
 struct NormalTextView: View {
     let text: String
-    
+    let widthProportion: CGFloat = 0.8333333
     var body: some View {
         Text(text)
             .fontWeight(.bold)
             .foregroundColor(.white)
             .multilineTextAlignment(.center)
-            
+            .frame(width: screenWidth * widthProportion)
     }
 }
 
@@ -38,14 +38,14 @@ struct CustomNormalTextView: View {
     let text: String
     let chosenFont: String
     var fontSize: CGFloat = 15
-    
+    var widthProportion: CGFloat = 0.8333333
     var body: some View {
         Text(text)
             .font(Font.custom(chosenFont,size: fontSize))
             .fontWeight(.bold)
             .foregroundColor(.white)
             .multilineTextAlignment(.center)
-            
+            .frame(width: screenWidth * widthProportion)
     }
 }
 
@@ -91,18 +91,23 @@ struct BorderedNormalTextView: View {
 }
 
 
-#Preview {
-    ZStack {
-        Color.black.ignoresSafeArea()
-        VStack {
-            BigTextView(text: "Life is not about having everything. It's about finding meaning in everything.")
-            
-            NormalTextView(text: "Welcome to your daily dose of inspiration")
-            
-            BorderedBigTextView(text: "Life is not about having everything. It's about finding meaning in everything.")
-            
-            BorderedNormalTextView(text: "Welcome to your daily dose of inspiration")
 
+
+
+struct TextViews_Previews: PreviewProvider {
+    static var previews: some View {
+        ZStack {
+            Color.black.ignoresSafeArea()
+            VStack {
+                BigTextView(text: "Life is not about having everything. It's about finding meaning in everything.")
+                
+                NormalTextView(text: "Welcome to your daily dose of inspiration")
+                
+                BorderedBigTextView(text: "Life is not about having everything. It's about finding meaning in everything.")
+                
+                BorderedNormalTextView(text: "Welcome to your daily dose of inspiration")
+
+            }
         }
     }
 }
