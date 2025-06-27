@@ -15,46 +15,44 @@ class QuoteViewModel: ObservableObject {
     }
     
     func getQuote(urlString: String) {
-        // try to get url
+        // Try to get url
+        guard let url = URL(string: urlString) else { return }
         
-        guard let url = URL(string: urlString) else {return}
-        
-        // Send get request from the quotes api
-        
+        // Send get request from quote API
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
-        // Try to get data and any error infromation
-        
-        let task = URLSession.shared.dataTask(with: request) { (data , response , error) in
+        // Try to get data and any error information
+        let task = URLSession.shared.dataTask(with: request)
+        {
+            (data, response, error) in
             let jsonDecoder = JSONDecoder()
-            // This is only called only if error is not nil
+            // This is called only if error is not nil
             if let error = error {
                 print(error)
                 return
             }
             
             // Get data if it is not nil
-           guard let data = data else {
+            guard let data = data else {
                 print("data was nil")
                 return
             }
             
             do {
-                let newQuoteModel = try jsonDecoder.decode(QuoteModel.self, from: data)
+                let newQuoteModel = try jsonDecoder
+                    .decode(QuoteModel.self, from: data)
                 
-                // Crucial step - update quote model
-                
+                // Crucial step - update quoteModel
                 DispatchQueue.main.async {
                     self.quoteModel = newQuoteModel
-
                 }
-                                
+                
             } catch {
                 print(error)
             }
+            
         }
-        
-        
+        task.resume()
     }
 }

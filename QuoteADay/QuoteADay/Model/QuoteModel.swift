@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - WelcomeElement
+// MARK: - QuoteModel
 struct QuoteModel: Codable {
     let _id, content, author: String
     let tags: [String]
