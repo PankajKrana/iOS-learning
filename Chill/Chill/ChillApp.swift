@@ -11,7 +11,7 @@ import SwiftUI
 struct ChillApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ChillView()
         }
     }
 }
