@@ -21,7 +21,7 @@ struct ImageAndPhotographerView: View {
         ZStack(alignment: .top) {
             Image(imageName)
                 .resizable()
-                .scaledToFit()
+                .scaledToFill()
                 .ignoresSafeArea()
             
             PhotoByView(

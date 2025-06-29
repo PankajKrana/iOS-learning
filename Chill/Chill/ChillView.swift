@@ -27,6 +27,9 @@ struct ChillView: View {
             currentImageIndex = nextIndex(index: currentImageIndex)
 
         }
+        .onAppear{
+            playSound(sound: sound, type: type)
+        }
     }
     func nextIndex(index: Int) -> Int {
         return (index + 1) % imageData.count
