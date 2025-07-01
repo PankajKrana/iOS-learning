@@ -22,6 +22,58 @@ struct HomeScreenView: View {
     }
 }
 
+struct FeatureItemView: View {
+    let lightColor: Color
+    let mediumColor: Color
+    let darkColor: Color
+    let title: String
+    let iconName: String
+    var body: some View {
+        let width = UIScreen.main.bounds.width
+        let halfWidth = width / 2
+        let boxDim = 0.8 * halfWidth
+
+        ZStack {
+            Rectangle()
+                .fill(
+                LinearGradient(colors: [lightColor,mediumColor,darkColor],
+                               startPoint: .topLeading,
+                               endPoint: .bottomTrailing)
+                )
+                .frame(width: boxDim, height: boxDim)
+            .cornerRadius(10)
+            
+            VStack(alignment: .leading) {
+                Text(title)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.leading)
+                    .foregroundColor(textWhite)
+                    .font(.body)
+                    .padding()
+                    
+                Spacer()
+                HStack {
+                    Image(systemName: iconName)
+                        .imageScale(.large)
+                        .foregroundColor(textWhite)
+
+                    Spacer()
+                    Text("Start")
+                        .foregroundColor(textWhite)
+                        .font(.body)
+                        .padding(5)
+                        .background(buttonBlue)
+                        .cornerRadius( 10)
+                        .shadow(radius: 3)
+
+                }.padding()
+                    
+            }.frame(width: boxDim, height: boxDim, alignment: .leading)
+        }
+    }
+}
+
+
 struct ChipsView: View {
     
     let chips: [String]
