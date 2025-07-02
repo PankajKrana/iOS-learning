@@ -21,10 +21,17 @@ struct HomeScreenView: View {
             deepBlue.ignoresSafeArea()
             
             
-            Text( homeScreen)
-                .foregroundStyle(.white)
-                .font(.largeTitle)
-            
+            VStack {
+                GreetingsView(name: "Ron")
+                
+                ChipsView(chips: chips)
+                
+                CurrentMeditationView()
+                
+                FeatureView()
+                
+                Spacer()
+            }
         }
     }
 }
