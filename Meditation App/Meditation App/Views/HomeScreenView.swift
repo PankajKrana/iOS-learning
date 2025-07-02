@@ -9,6 +9,13 @@ import SwiftUI
 
 struct HomeScreenView: View {
     let homeScreen = "Home Screen"
+    let chips = [
+        "Sweet Sleep",
+        "Focus",
+        "Depression",
+        "Anxiety",
+        "Stress",
+    ]
     var body: some View {
         ZStack {
             deepBlue.ignoresSafeArea()
@@ -17,6 +24,103 @@ struct HomeScreenView: View {
             Text( homeScreen)
                 .foregroundStyle(.white)
                 .font(.largeTitle)
+            
+        }
+    }
+}
+
+struct CurrentMeditationView: View {
+
+    var body: some View {
+            
+        HStack {
+            VStack(alignment: .leading, spacing: 5) {
+                Text("Daily Thought")
+                    .foregroundColor(textWhite)
+                    .fontWeight(.semibold)
+                Text("Meditation  3-10 min")
+                    .foregroundColor(textWhite)
+                    .font(.caption)
+            }.padding()
+            
+            Spacer()
+            
+            Image(systemName: "play.circle")
+                .resizable()
+                .frame(width: 50, height: 50)
+                .foregroundColor(textWhite)
+                .background(buttonBlue)
+                .clipShape(Circle())
+                .padding()
+
+        }.background(lightRed)
+            .cornerRadius(10)
+            .padding()
+        
+    }
+}
+
+
+struct Feature: Identifiable {
+    let id = UUID()
+    let lightColor: Color
+    let mediumColor: Color
+    let darkColor: Color
+    let title: String
+    let iconName: String
+}
+
+struct FeatureView: View {
+    let columns: [GridItem] = Array(repeating: GridItem(.fixed(UIScreen.main.bounds.width / 2), spacing: 0), count: 2)
+        
+    let featureList = [
+    Feature(
+        lightColor: blueViolet1,
+        mediumColor: blueViolet2,
+        darkColor: blueViolet3,
+        title: "Sleep meditation",
+        iconName: "music.note"),
+    Feature(
+        lightColor: lightGreen1,
+        mediumColor: lightGreen2,
+        darkColor: lightGreen3,
+        title: "Tips for sleeping",
+        iconName: "video"),
+    Feature(
+        lightColor: orangeYellow1,
+        mediumColor: orangeYellow2,
+        darkColor: orangeYellow3,
+        title: "Night island",
+        iconName: "leaf"),
+    Feature(
+        lightColor: beige1,
+        mediumColor: beige2,
+        darkColor: beige3,
+        title: "Calming sounds",
+        iconName: "heart")
+    ]
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("Featured")
+                .foregroundColor(textWhite)
+                .font(.largeTitle)
+                .fontWeight(.semibold)
+            .padding()
+            
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 10) {
+                    ForEach(featureList) { feature in
+                        FeatureItemView(
+                            lightColor: feature.lightColor,
+                            mediumColor: feature.mediumColor,
+                            darkColor: feature.darkColor,
+                            title: feature.title,
+                            iconName: feature.iconName)
+                    }
+
+                }
+            }
             
         }
     }
@@ -125,5 +229,6 @@ struct GreetingsView: View {
 }
 
 #Preview {
-    HomeScreenView()
+        HomeScreenView()
+    
 }
