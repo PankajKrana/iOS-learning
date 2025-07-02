@@ -28,6 +28,65 @@ struct HomeScreenView: View {
         }
     }
 }
+struct MeditateScreenView: View {
+    
+    var body: some View {
+        ZStack {
+            deepBlue.ignoresSafeArea()
+
+            Text("MeditateScreenView")
+                .foregroundColor(textWhite)
+                .font(.footnote)
+                .fontWeight(.semibold)
+                .padding()
+        }
+    }
+}
+
+struct SleepScreenView: View {
+    
+    var body: some View {
+        ZStack {
+            lightRed.ignoresSafeArea()
+
+            Text("SleepScreenView")
+                .foregroundColor(textWhite)
+                .font(.footnote)
+                .fontWeight(.semibold)
+                .padding()
+        }
+    }
+}
+
+struct MusicView: View {
+    
+    var body: some View {
+        ZStack {
+            lightGreen1.ignoresSafeArea()
+
+            Text("MusicView")
+                .foregroundColor(textWhite)
+                .font(.footnote)
+                .fontWeight(.semibold)
+                .padding()
+        }
+    }
+}
+
+struct ProfileView: View {
+    
+    var body: some View {
+        ZStack {
+            aquaBlue.ignoresSafeArea()
+
+            Text("ProfileView")
+                .foregroundColor(textWhite)
+                .font(.footnote)
+                .fontWeight(.semibold)
+                .padding()
+        }
+    }
+}
 
 struct CurrentMeditationView: View {
 
